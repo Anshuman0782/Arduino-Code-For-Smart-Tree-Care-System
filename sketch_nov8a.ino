@@ -33,11 +33,9 @@ float safeFloat(float v) {
 void setup() {
   Serial.begin(115200);
 
-  // Relay OFF by default
   pinMode(RELAY_PIN, OUTPUT);
   digitalWrite(RELAY_PIN, HIGH);
 
-  // FIX: prevent floating and ghost motion
   pinMode(PIR_PIN, INPUT_PULLUP);
 
   pinMode(LDR_PIN, INPUT);
@@ -79,7 +77,7 @@ void loop() {
   int soilValue = analogRead(SOIL_PIN);
   int moisture = map(soilValue, 1023, 0, 0, 100);
 
-  // FIX: use inverted reading for pull-up
+  
   int motion = !digitalRead(PIR_PIN);
 
   int light = digitalRead(LDR_PIN);
